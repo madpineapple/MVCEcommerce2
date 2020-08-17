@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,6 +27,16 @@ namespace MVCEcommerce.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Store()
+        {
+            ViewBag.Message = "Your Product page.";
+            SqlConnection Con = new SqlConnection();
+            string path = ConfigurationManager.ConnectionStrings["dbpath"].ConnectionString;
+            Con.ConnectionString = path;
+            DataTable dt = new DataTable();
             return View();
         }
     }
